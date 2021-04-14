@@ -12,20 +12,20 @@ function init() {
   //Create scene
   scene = new THREE.Scene();
 
-  const fov = 35;
-  const aspect = container.clientWidth / container.clientHeight;
+  const fov = 75;
+  const aspect = window.innerWidth / window.innerHeight;
   const near = 0.1;
   const far = 1000;
 
   //Camera setup
   camera = new THREE.PerspectiveCamera(fov, aspect, near, far);
-  camera.position.set(0, 5, 30);
+  camera.position.set(0, 5, 10);
 
-  const ambient = new THREE.AmbientLight(0x404040, 2);
+  const ambient = new THREE.AmbientLight(0x404040, 1);
   scene.add(ambient);
 
   const light = new THREE.DirectionalLight(0xffffff, 2);
-  light.position.set(50, 50, 100);
+  light.position.set(60, 50, 30);
   scene.add(light);
   //Renderer
   renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
@@ -45,7 +45,7 @@ function init() {
 
 function animate() {
   requestAnimationFrame(animate);
-  house.rotation.z += 0.005;
+  house.rotation.y += 0.005;
   renderer.render(scene, camera);
 }
 
